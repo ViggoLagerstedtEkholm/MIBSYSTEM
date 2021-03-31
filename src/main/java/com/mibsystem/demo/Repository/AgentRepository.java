@@ -1,6 +1,6 @@
 package com.mibsystem.demo.Repository;
 
-import com.mibsystem.demo.Models.Agent;
+import com.mibsystem.demo.Models.Actors.Agent;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

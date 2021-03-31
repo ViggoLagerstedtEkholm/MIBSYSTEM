@@ -1,8 +1,7 @@
 package com.mibsystem.demo.Repository;
-import com.mibsystem.demo.Models.Alien;
+import com.mibsystem.demo.Models.Actors.Alien;
 import org.springframework.data.repository.CrudRepository;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface AlienRepository extends CrudRepository<Alien, Integer> {
