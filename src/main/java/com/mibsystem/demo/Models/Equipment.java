@@ -1,9 +1,8 @@
 package com.mibsystem.demo.Models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.mibsystem.demo.Models.Actors.Agent;
+
+import javax.persistence.*;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class Equipment
@@ -14,6 +13,17 @@ public class Equipment
     private String name;
     private Long id;
     private boolean isRented;
+
+    @ManyToOne
+    private Agent agent;
+
+    public Agent getAgent() {
+        return agent;
+    }
+
+    public void setAgent(Agent agent) {
+        this.agent = agent;
+    }
 
     public boolean isRented() {
         return isRented;

@@ -1,6 +1,8 @@
 package com.mibsystem.demo.Models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity // This tells Hibernate to make a table out of this class
 class Location {
@@ -8,20 +10,18 @@ class Location {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
+    @OneToOne
+    private Report report;
+
     private double latitude;
     private double longitude;
     private double altitude;
     private double accuracy;
     private String address;
-    private long occasionID;
 
-    public long getOccasionID() {
-        return occasionID;
-    }
+    public Report getReport() { return report; }
 
-    public void setOccasionID(long occasionID) {
-        this.occasionID = occasionID;
-    }
+    public void setReport(Report report) { this.report = report; }
 
     public double getLatitude() {
         return latitude;
@@ -43,13 +43,9 @@ class Location {
         return address;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    public void setId(Long id) { this.id = id; }
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
     public void setLatitude(double latitude) {
         this.latitude = latitude;

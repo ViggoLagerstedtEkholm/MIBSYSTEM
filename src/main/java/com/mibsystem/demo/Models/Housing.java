@@ -1,5 +1,7 @@
 package com.mibsystem.demo.Models;
 
+import com.mibsystem.demo.Models.Actors.Alien;
+
 import javax.persistence.*;
 
 @Entity // This tells Hibernate to make a table out of this class

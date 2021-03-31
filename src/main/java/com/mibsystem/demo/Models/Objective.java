@@ -1,8 +1,8 @@
 package com.mibsystem.demo.Models;
 
+import com.mibsystem.demo.Models.Actors.Agent;
+
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity // This tells Hibernate to make a table out of this class
 public class Objective {

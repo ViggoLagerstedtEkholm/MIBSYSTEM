@@ -1,25 +1,26 @@
-package com.mibsystem.demo.Models;
+package com.mibsystem.demo.Models.Actors;
 
-import org.hibernate.annotations.Cascade;
+import com.mibsystem.demo.Models.Equipment;
+import com.mibsystem.demo.Models.Housing;
+import com.mibsystem.demo.Models.Objective;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity // This tells Hibernate to make a table out of this class
-public class Agent {
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    private Long id;
-
-    private String name;
-    private int age;
+public class Agent extends User {
+    @ManyToOne
+    private Admin admin;
 
     @OneToMany(mappedBy="agent")
     private List<Alien> aliens = new ArrayList<>();
 
     @OneToMany(mappedBy="agent")
     private List<Objective> objectives = new ArrayList<>();
+
+    @OneToMany(mappedBy="agent")
+    private List<Equipment> equipment = new ArrayList<>();
 
     @OneToOne(cascade = CascadeType.ALL)
     private Housing house;
@@ -56,30 +57,6 @@ public class Agent {
         this.objectives = objectives;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public void setAliens(List<Alien> aliens) {
         this.aliens = aliens;
     }
@@ -94,5 +71,13 @@ public class Agent {
 
     public void setHouse(Housing house) {
         this.house = house;
+    }
+
+    public Admin getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
     }
 }
