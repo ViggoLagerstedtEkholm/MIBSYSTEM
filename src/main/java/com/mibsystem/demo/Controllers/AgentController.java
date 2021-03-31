@@ -1,18 +1,17 @@
 package com.mibsystem.demo.Controllers;
 
-import com.mibsystem.demo.Models.Agent;
+import com.mibsystem.demo.Models.Actors.Agent;
 import com.mibsystem.demo.Models.Equipment;
 import com.mibsystem.demo.Repository.AgentRepository;
 import com.mibsystem.demo.Repository.EquipmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 import java.util.Optional;
 
 @Controller
 @RequestMapping("/Agent")
+@CrossOrigin("*")
 public class AgentController {
     @Autowired
     private AgentRepository agentRepository;

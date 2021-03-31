@@ -1,6 +1,6 @@
 package com.mibsystem.demo.Controllers;
 
-import com.mibsystem.demo.Models.Alien;
+import com.mibsystem.demo.Models.Actors.Alien;
 import com.mibsystem.demo.Repository.AlienRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
