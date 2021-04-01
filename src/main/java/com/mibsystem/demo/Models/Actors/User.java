@@ -17,6 +17,8 @@ public abstract class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    private double salary;
+
     @NotBlank
     @Size(max = 20)
     private String username;
@@ -39,6 +41,20 @@ public abstract class User {
     @Size(max = 120)
     private String password;
 
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(	name = "user_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "roles_id"))
+    private Set<Role> roles = new HashSet<>();
+
+    public double getSalary() {
+        return salary;
+    }
+
+    public void setSalary(double salary) {
+        this.salary = salary;
+    }
+
     public int getAge() {
         return age;
     }
@@ -54,9 +70,6 @@ public abstract class User {
     public void setName(String name) {
         this.name = name;
     }
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    private Set<Role> roles = new HashSet<>();
 
     public Long getId() {
         return id;

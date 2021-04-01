@@ -39,19 +39,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenticationController
 {
     @Autowired
-    AuthenticationManager authenticationManager;
+    private AuthenticationManager authenticationManager;
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    RoleRepository roleRepository;
+    private RoleRepository roleRepository;
 
     @Autowired
-    PasswordEncoder encoder;
+    private PasswordEncoder encoder;
 
     @Autowired
-    JWTUtilities jwtUtils;
+    private JWTUtilities jwtUtils;
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginObject loginRequest) {
@@ -92,14 +92,14 @@ public class AuthenticationController
         User user = new Alien();
 
         user.setUsername(signUpRequest.getUsername());
-        user.setUsername(signUpRequest.getEmail());
-        user.setUsername(signUpRequest.getPassword());
+        user.setEmail(signUpRequest.getEmail());
+        user.setPassword(encoder.encode(signUpRequest.getPassword()));
 
         Set<String> strRoles = signUpRequest.getRoles();
         Set<Role> roles = new HashSet<>();
 
         if (strRoles == null) {
-            Role userRole = roleRepository.findByName(Roles.ROLE_USER)
+            Role userRole = roleRepository.findByName(Roles.ROLE_ALIEN)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             roles.add(userRole);
         } else {
@@ -112,13 +112,13 @@ public class AuthenticationController
 
                         break;
                     case "mod":
-                        Role modRole = roleRepository.findByName(Roles.ROLE_MODERATOR)
+                        Role modRole = roleRepository.findByName(Roles.ROLE_AGENT)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(modRole);
 
                         break;
                     default:
-                        Role userRole = roleRepository.findByName(Roles.ROLE_USER)
+                        Role userRole = roleRepository.findByName(Roles.ROLE_ALIEN)
                                 .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
                         roles.add(userRole);
                 }

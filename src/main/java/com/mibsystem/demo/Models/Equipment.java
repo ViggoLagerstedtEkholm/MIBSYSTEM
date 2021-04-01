@@ -9,9 +9,10 @@ public class Equipment
 {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
+
     private int weight;
     private String name;
-    private Long id;
     private boolean isRented;
 
     @ManyToOne

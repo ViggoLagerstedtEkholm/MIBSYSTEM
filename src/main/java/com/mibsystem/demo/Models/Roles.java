@@ -1,7 +1,7 @@
 package com.mibsystem.demo.Models;
 
 public enum Roles {
-    ROLE_USER,
-    ROLE_MODERATOR,
+    ROLE_ALIEN,
+    ROLE_AGENT,
     ROLE_ADMIN
 }
