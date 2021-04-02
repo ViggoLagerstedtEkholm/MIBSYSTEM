@@ -10,14 +10,12 @@ public interface AlienRepository extends CrudRepository<Alien, Integer> {
 
     Optional<Alien> findByEmail(String username);
 
-    @Override
-    Optional<Alien> findById(Integer integer);
+    Optional<Alien> findById(Long integer);
 
     @Override
     <S extends Alien> S save(S s);
 
-    @Override
-    boolean existsById(Integer integer);
+    boolean existsById(Long integer);
 
     @Override
     Iterable<Alien> findAll();

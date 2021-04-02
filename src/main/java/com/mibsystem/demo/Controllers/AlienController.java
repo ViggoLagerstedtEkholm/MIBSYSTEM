@@ -16,6 +16,19 @@ public class AlienController {
     @Autowired
     private AlienRepository alienRepository;
 
+    @RequestMapping(value="/id/{id}", method = RequestMethod.GET)
+    //@PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
+    public @ResponseBody Alien getAlien(@PathVariable Long id) {
+        if(alienRepository.findById(id).isPresent()){
+            Alien alien = alienRepository.findById(id).get();
+            System.out.print("Found alien.");
+            return alien;
+        }
+        System.out.print("Did not find alien.");
+
+        return null;
+    }
+
     @PostMapping(path="/deleteAll")
     public @ResponseBody void deleteAllAlien () {
         alienRepository.deleteAll();
@@ -27,7 +40,7 @@ public class AlienController {
         return (int) alienRepository.count();
     }
 
-    @GetMapping(path="/{email}")
+    @GetMapping(path="/name/{email}")
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public @ResponseBody Boolean deleteAccount(@RequestParam String email) {
         Optional<Alien> alien = alienRepository.findByEmail(email);
