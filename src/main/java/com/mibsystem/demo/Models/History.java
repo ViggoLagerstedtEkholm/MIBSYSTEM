@@ -1,7 +1,5 @@
 package com.mibsystem.demo.Models;
 
-import com.mibsystem.demo.Models.Actors.Agent;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
@@ -14,7 +12,7 @@ public class History {
     private Date deletedDate;
 
     @OneToOne
-    private Agent agent;
+    private User agent;
 
     public History() {}
 

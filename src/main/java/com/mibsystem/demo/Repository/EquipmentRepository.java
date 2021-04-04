@@ -6,14 +6,12 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.Optional;
 
 public interface EquipmentRepository extends CrudRepository<Equipment, Integer> {
-    @Override
-    Optional<Equipment> findById(Integer integer);
+    Optional<Equipment> findById(Long integer);
 
     @Override
     Equipment save(Equipment s);
 
-    @Override
-    boolean existsById(Integer integer);
+    boolean existsById(Long integer);
 
     @Override
     Iterable<Equipment> findAll();

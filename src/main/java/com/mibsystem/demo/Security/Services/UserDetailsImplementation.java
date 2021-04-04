@@ -1,7 +1,7 @@
 package com.mibsystem.demo.Security.Services;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.mibsystem.demo.Models.Actors.User;
+import com.mibsystem.demo.Models.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;

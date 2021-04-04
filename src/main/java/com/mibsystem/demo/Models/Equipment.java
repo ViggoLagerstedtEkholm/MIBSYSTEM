@@ -1,7 +1,5 @@
 package com.mibsystem.demo.Models;
 
-import com.mibsystem.demo.Models.Actors.Agent;
-
 import javax.persistence.*;
 
 @Entity // This tells Hibernate to make a table out of this class
@@ -14,16 +12,14 @@ public class Equipment
     private int weight;
     private String name;
     private boolean isRented;
+    private boolean isBanned;
 
-    @ManyToOne
-    private Agent agent;
-
-    public Agent getAgent() {
-        return agent;
+    public boolean isBanned() {
+        return isBanned;
     }
 
-    public void setAgent(Agent agent) {
-        this.agent = agent;
+    public void setBanned(boolean banned) {
+        isBanned = banned;
     }
 
     public boolean isRented() {

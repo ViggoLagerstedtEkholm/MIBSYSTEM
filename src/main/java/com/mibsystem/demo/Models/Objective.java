@@ -1,7 +1,5 @@
 package com.mibsystem.demo.Models;
 
-import com.mibsystem.demo.Models.Actors.Agent;
-
 import javax.persistence.*;
 
 @Entity // This tells Hibernate to make a table out of this class
@@ -14,18 +12,18 @@ public class Objective {
     private Location location;
 
     @ManyToOne
-    private Agent agent;
+    private User agent;
 
     @OneToOne
     private Severity severity;
 
     private String name;
 
-    public Agent getAgent() {
+    public User getAgent() {
         return agent;
     }
 
-    public void setAgent(Agent agent) {
+    public void setAgent(User agent) {
         this.agent = agent;
     }
 

@@ -1,5 +1,5 @@
 package com.mibsystem.demo.Security.Services;
-import com.mibsystem.demo.Models.Actors.User;
+import com.mibsystem.demo.Models.User;
 import com.mibsystem.demo.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

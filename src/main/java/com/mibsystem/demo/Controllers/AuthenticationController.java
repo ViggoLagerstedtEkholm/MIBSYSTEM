@@ -7,14 +7,13 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
-import com.mibsystem.demo.Models.Actors.Alien;
 import com.mibsystem.demo.Models.Request.LoginObject;
 import com.mibsystem.demo.Models.Request.RegisterObject;
 import com.mibsystem.demo.Models.Response.JWTObject;
 import com.mibsystem.demo.Models.Response.MessageObject;
 import com.mibsystem.demo.Models.Role;
 import com.mibsystem.demo.Models.Roles;
-import com.mibsystem.demo.Models.Actors.User;
+import com.mibsystem.demo.Models.User;
 import com.mibsystem.demo.Repository.RoleRepository;
 import com.mibsystem.demo.Repository.UserRepository;
 import com.mibsystem.demo.Security.JWT.JWTUtilities;
@@ -91,9 +90,7 @@ public class AuthenticationController
                     .body(new MessageObject("Error: Email is already in use!"));
         }
 
-        // Create new user's account
-        User user = new Alien();
-
+        User user = new User();
         user.setUsername(signUpRequest.getUsername());
         user.setEmail(signUpRequest.getEmail());
         user.setPassword(encoder.encode(signUpRequest.getPassword()));
@@ -130,6 +127,7 @@ public class AuthenticationController
 
         user.setRoles(roles);
         userRepository.save(user);
+
 
         return ResponseEntity.ok(new MessageObject("User registered successfully!"));
     }

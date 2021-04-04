@@ -1,10 +1,7 @@
 package com.mibsystem.demo.Repository;
 
-import com.mibsystem.demo.Models.Actors.Alien;
 import com.mibsystem.demo.Models.Announcement;
 import org.springframework.data.repository.CrudRepository;
-
-import javax.persistence.Entity;
 
 public interface AnnouncementRepository extends CrudRepository<Announcement, Integer> {
     @Override

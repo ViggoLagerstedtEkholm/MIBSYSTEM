@@ -1,18 +1,19 @@
-package com.mibsystem.demo.Models.Actors;
+package com.mibsystem.demo.Models;
 
 import com.mibsystem.demo.Models.Role;
+import org.hibernate.annotations.Cascade;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import javax.validation.constraints.Max;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public abstract class User {
+public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -46,6 +47,62 @@ public abstract class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "roles_id"))
     private Set<Role> roles = new HashSet<>();
+
+    @ManyToMany
+    private List<User> supervising = new ArrayList<>();
+
+    @OneToOne
+    @Cascade(org.hibernate.annotations.CascadeType.DELETE)
+    private Housing housing;
+
+    @ManyToOne
+    private User responsibleAgent;
+
+    @OneToMany
+    private List<Equipment> equipment = new ArrayList<>();
+
+    @OneToMany
+    private List<Objective> objectives = new ArrayList<>();
+
+    public Housing getHousing() {
+        return housing;
+    }
+
+    public void setHousing(Housing housing) {
+        this.housing = housing;
+    }
+
+    public User getResponsibleAgent() {
+        return responsibleAgent;
+    }
+
+    public void setResponsibleAgent(User responsibleAgent) {
+        this.responsibleAgent = responsibleAgent;
+    }
+
+    public List<Equipment> getEquipment() {
+        return equipment;
+    }
+
+    public void setEquipment(List<Equipment> equipment) {
+        this.equipment = equipment;
+    }
+
+    public List<Objective> getObjectives() {
+        return objectives;
+    }
+
+    public void setObjectives(List<Objective> objectives) {
+        this.objectives = objectives;
+    }
+
+    public List<User> getSupervising() {
+        return supervising;
+    }
+
+    public void setSupervising(List<User> supervising) {
+        this.supervising = supervising;
+    }
 
     public double getSalary() {
         return salary;

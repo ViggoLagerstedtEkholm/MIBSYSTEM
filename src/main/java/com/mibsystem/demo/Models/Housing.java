@@ -1,31 +1,28 @@
 package com.mibsystem.demo.Models;
 
-import com.mibsystem.demo.Models.Actors.Alien;
-
 import javax.persistence.*;
 
 @Entity // This tells Hibernate to make a table out of this class
-public abstract class Housing {
+public class Housing {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
     @ManyToOne
-    private Alien alien;
+    private User entity;
 
     private transient Vector2D dimensions;
     private int license;
     private String address;
-
     private double area;
     private int rent;
 
-    public Alien getAlien() {
-        return alien;
+    public User getAlien() {
+        return entity;
     }
 
-    public void setAlien(Alien Alien) {
-        this.alien = Alien;
+    public void setAlien(User Alien) {
+        this.entity = Alien;
     }
 
     public void setArea(double area) {
